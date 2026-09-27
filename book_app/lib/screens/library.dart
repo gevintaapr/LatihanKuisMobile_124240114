@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'detail.dart';
-import '../models/bookModels.dart';
+import '../models/book_models.dart';
 
 //StatefulWidget digunakan ketika halaman tersebut memiliki State (data atau tampilan UI yang bisa berubah-ubah/dinamis selama aplikasi berjalan, seperti list data, form input, atau nilai yang di-update dengan setState
 

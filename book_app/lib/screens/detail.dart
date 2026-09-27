@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/bookModels.dart';
+import '../models/book_models.dart';
 
 class Detail extends StatelessWidget {
   final BookModel book;
@@ -80,10 +80,10 @@ class Detail extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildInfoChip(Icons.star, Colors.amber, "${book.rating}"),
-                _buildInfoChip(Icons.category, Colors.blue, book.genre),
-                _buildInfoChip(Icons.auto_stories, Colors.green, "${book.pages} hlm"),
-                _buildInfoChip(Icons.calendar_today, Colors.orange, "${book.year}"),
+                _buildInfoChip(Icons.star, const Color.fromARGB(255, 229, 202, 26), "${book.rating}"),
+                _buildInfoChip(Icons.category, Color.fromARGB(255, 199, 191, 191), book.genre),
+                _buildInfoChip(Icons.pages_rounded, Colors.green, "${book.pages} hlm"),
+                _buildInfoChip(Icons.calendar_month, const Color.fromARGB(255, 182, 114, 202), "${book.year}"),
               ],
             ),
             const SizedBox(height: 20),
@@ -98,12 +98,15 @@ class Detail extends StatelessWidget {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(14.0),
-                child: Column(
-                  children: [
-                    _buildInfoRow(Icons.business, "Penerbit", book.publisher),
-                    const Divider(height: 16),
-                    _buildInfoRow(Icons.link, "URL Buku", book.bookUrl),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      _buildInfoRow(Icons.business, "Penerbit", book.publisher),
+                      const Divider(height: 16),
+                      _buildInfoRow(Icons.link, "URL Buku", book.bookUrl),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -158,7 +161,7 @@ class Detail extends StatelessWidget {
     );
   }
 
-  // Helper widget untuk Info Row di Card
+  // ini buatt widget untuk Info Row di Card
   Widget _buildInfoRow(IconData icon, String title, String value) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,

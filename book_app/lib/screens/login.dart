@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../root.dart';
 import '../models/user.dart';
 
@@ -37,7 +38,8 @@ class _LoginPageState extends State<LoginPage> {
       // pushReplacement() mengganti halaman aktif dengan halaman baru tanpa menambah stack. Halaman sebelumnya akan dihapus dan diganti dengan halaman baru, sehingga tidak bisa kembali ke halaman sebelumnya.
 
       // Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-      Navigator.pushReplacement( //
+      Navigator.pushReplacement(
+        //
         context,
         MaterialPageRoute(builder: (context) => Root(username: username)),
       );
@@ -51,37 +53,75 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  void _logout() {
-    setState(() {
-      isLoggedin = false;
-      _usernameController.clear();
-      _passwordController.clear();
-    });
-  }
+  // void _logout() {
+  //   setState(() {
+  //     isLoggedin = false;
+  //     _usernameController.clear();
+  //     _passwordController.clear();
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return Scaffold(
-      appBar: AppBar(title: Text("Login Page")),
+      appBar: AppBar(title: const Text("Login Page")),
       body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // if (!isLoggedin) ... [ //disebut spread collection, untuk memasukkan banyak widget ke dalam children
-              Text("Login Page"),
-              SizedBox(height: 20),
-              _usernameField(_usernameController),
-              _passwordField(_passwordController),
-              SizedBox(height: 20),
-              ElevatedButton(onPressed: _login, child: Text("Login")),
-              // ] else ...[
-              //   Text("Halo! ${username}"),
-              //   SizedBox(height: 20),
-              //   ElevatedButton(onPressed: _logout, child: Icon(Icons.logout)),
-              // ]
-            ],
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 420),
+            child: Card(
+              elevation: 2,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(28),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    CircleAvatar(
+                      radius: 32,
+                      backgroundColor: colors.primaryContainer,
+                      child: Icon(
+                        Icons.menu_book_rounded,
+                        size: 34,
+                        color: colors.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 18),
+                    Text(
+                      "Hai! Baca Buku?",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headlineSmall
+                          ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 6),
+
+                    const SizedBox(height: 28),
+                    _usernameField(_usernameController),
+                    const SizedBox(height: 16),
+                    _passwordField(_passwordController),
+                    const SizedBox(height: 24),
+                    SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: _login,
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        child: const Text("Login"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),
@@ -93,16 +133,15 @@ Widget _usernameField(TextEditingController usernameController) {
   return SizedBox(
     width: 300,
     child: TextField(
-        controller: usernameController,
-        enabled: true,
-        decoration: InputDecoration(
-          hintText: "username kamu",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
-            borderSide: BorderSide(color: Colors.blue),
-          ),
-        ),
+      controller: usernameController,
+      enabled: true,
+      decoration: InputDecoration(
+        labelText: "Username",
+        hintText: "Masukkan username",
+        prefixIcon: const Icon(Icons.person_outline),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
+    ),
   );
 }
 
@@ -113,11 +152,10 @@ Widget _passwordField(TextEditingController passwordController) {
       controller: passwordController,
       enabled: true,
       decoration: InputDecoration(
-        hintText: "password",
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-          borderSide: BorderSide(color: Colors.blue),
-        ),
+        labelText: "Password",
+        hintText: "Masukkan password",
+        prefixIcon: const Icon(Icons.lock_outline),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
     ),
   );

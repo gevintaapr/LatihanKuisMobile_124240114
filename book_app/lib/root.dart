@@ -1,12 +1,13 @@
 import 'package:book_app/screens/library.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/login.dart';
 import 'screens/profile.dart';
 
 class Root extends StatefulWidget {
   final String username;
-  final String name;
-  
-  const Root({super.key, required this.username, required this.name});
+
+  const Root({super.key, required this.username});
 
   @override
   State<Root> createState() => _RootState();
@@ -16,11 +17,18 @@ class _RootState extends State<Root> {
   int _selectedIndex = 0;
   final List<String> _title = ["Library", "Profile"];
 
+  void _logout() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (_) => const LoginPage()),
+      (route) => false,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> pages = [
       Library(username: widget.username),
-      Profile(username: widget.username, name: widget.name),
+      Profile(username: widget.username, onLogout: _logout),
     ];
 
     return Scaffold(
