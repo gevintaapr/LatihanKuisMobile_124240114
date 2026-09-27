@@ -92,8 +92,7 @@ class _LoginPageState extends State<LoginPage> {
 Widget _usernameField(TextEditingController usernameController) {
   return SizedBox(
     width: 300,
-    child: Container(
-      child: TextField(
+    child: TextField(
         controller: usernameController,
         enabled: true,
         decoration: InputDecoration(
@@ -104,23 +103,20 @@ Widget _usernameField(TextEditingController usernameController) {
           ),
         ),
       ),
-    ),
   );
 }
 
 Widget _passwordField(TextEditingController passwordController) {
   return SizedBox(
     width: 300,
-    child: Container(
-      child: TextField(
-        controller: passwordController,
-        enabled: true,
-        decoration: InputDecoration(
-          hintText: "password",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
-            borderSide: BorderSide(color: Colors.blue),
-          ),
+    child: TextField(
+      controller: passwordController,
+      enabled: true,
+      decoration: InputDecoration(
+        hintText: "password",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(color: Colors.blue),
         ),
       ),
     ),

@@ -25,7 +25,7 @@ class Detail extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.15),
+                      // color: Colors.black.withOpacity(0.15),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -139,7 +139,7 @@ class Detail extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        // color: color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(

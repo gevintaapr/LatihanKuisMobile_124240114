@@ -1,9 +1,12 @@
 import 'package:book_app/screens/library.dart';
 import 'package:flutter/material.dart';
+import 'screens/profile.dart';
 
 class Root extends StatefulWidget {
   final String username;
-  const Root({super.key, required this.username});
+  final String name;
+  
+  const Root({super.key, required this.username, required this.name});
 
   @override
   State<Root> createState() => _RootState();
@@ -17,7 +20,7 @@ class _RootState extends State<Root> {
   Widget build(BuildContext context) {
     final List<Widget> pages = [
       Library(username: widget.username),
-      // Profile(username: widget.username),
+      Profile(username: widget.username, name: widget.name),
     ];
 
     return Scaffold(
