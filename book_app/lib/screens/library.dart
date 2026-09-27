@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'detail.dart';
 import '../models/bookModels.dart';
 
 //StatefulWidget digunakan ketika halaman tersebut memiliki State (data atau tampilan UI yang bisa berubah-ubah/dinamis selama aplikasi berjalan, seperti list data, form input, atau nilai yang di-update dengan setState
@@ -24,8 +25,7 @@ class _LibraryState extends State<Library> {
         padding: EdgeInsets.all(20),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio:
-              0.8, // Semakin kecil nilainya, card semakin memanjang ke bawah
+          childAspectRatio: 0.68,
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
         ),
@@ -40,28 +40,49 @@ class _LibraryState extends State<Library> {
           final book = bookList[index];
 
           return Card(
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisSize:
-                      MainAxisSize.min, // biar ngikutin ukuran kontennya,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 280,
-                      width: 200,
-                      child: Image.network(
-                        book.imageUrl,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) =>
-                            const Icon(Icons.broken_image, size: 40),
+            clipBehavior: Clip.antiAlias, // Penting: agar efek ripple InkWell tidak meluber keluar sudut kartu
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: InkWell(
+              onTap: () {
+                // Navigasi ke halaman detail dengan membawa data buku saat kartu diklik
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Detail(book: book)),
+                );
+              },
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Image.network(
+                            book.imageUrl,
+                            fit: BoxFit.contain,
+                            errorBuilder: (context, error, stackTrace) =>
+                                const Icon(Icons.broken_image, size: 40),
+                          ),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(book.title, textAlign: TextAlign.center,),
-                    Text(book.author, textAlign: TextAlign.center),
-                  ],
+                      const SizedBox(height: 4),
+                      Text(
+                        book.title,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        book.author,
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

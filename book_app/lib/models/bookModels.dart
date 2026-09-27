@@ -53,7 +53,7 @@ List<BookModel> bookList = [
     pages: 310,
     rating: 4.7,
     imageUrl:
-        "https://images-na.ssl-images-amazon.com/images/I/91b1Y3G2QJL.jpg",
+        "https://awsimages.detik.net.id/community/media/visual/2024/01/26/novel-grafis-the-hobbit.jpeg?w=700&q=90",
     bookUrl: "https://en.wikipedia.org/wiki/The_Hobbit",
   ),
 
@@ -68,7 +68,7 @@ List<BookModel> bookList = [
     pages: 432,
     rating: 4.6,
     imageUrl:
-        "https://images-na.ssl-images-amazon.com/images/I/71Q1tP4e4tL.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRjgXHOm-DPtPyEa2Bz0N56sBE3Ly8VYErwhEK_yHHpw&s=10",
     bookUrl: "https://en.wikipedia.org/wiki/Pride_and_Prejudice",
   ),
 
@@ -128,7 +128,7 @@ List<BookModel> bookList = [
     pages: 281,
     rating: 4.8,
     imageUrl:
-        "https://images-na.ssl-images-amazon.com/images/I/81OdwZQZ4YL.jpg",
+        "https://ebooks.gramedia.com/ebook-covers/25313/image_highres/HCO_TKAM2018MTH11.jpeg",
     bookUrl: "https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird",
   ),
 
@@ -143,7 +143,7 @@ List<BookModel> bookList = [
     pages: 96,
     rating: 4.9,
     imageUrl:
-        "https://images-na.ssl-images-amazon.com/images/I/71OZY035QTL.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVMjWVARf4fAFSUaQQupE4aax8IeUR3FppufjmS738uPsYbuaRrbldkiyW&s=10",
     bookUrl: "https://en.wikipedia.org/wiki/The_Little_Prince",
   ),
 ];
